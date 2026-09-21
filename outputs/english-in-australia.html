@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3f0e8">
+  <meta name="description" content="A practical English phrase guide for daily life in Australia, with Indonesian explanations.">
+  <title>Aus Talk — Everyday English field guide</title>
+  <style>
+    :root {
+      --paper: #f3f0e8;
+      --paper-2: #ebe7dc;
+      --ink: #17211f;
+      --muted: #66706c;
+      --line: #d4d6cd;
+      --card: #fbfaf6;
+      --accent: #0f766e;
+      --accent-dark: #0b5752;
+      --accent-soft: #d9eeea;
+      --warm: #c16b38;
+      --shadow: 0 16px 38px rgba(28, 42, 38, .07);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    ::selection { background: var(--accent-soft); color: var(--accent-dark); }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      padding: 10px 14px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 8px;
+      z-index: 50;
+    }
+    .skip-link:focus { top: 12px; }
+
+    .page-shell { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .brand { color: var(--ink); }
+    .brand-mark { color: var(--accent); margin-right: 8px; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+      gap: clamp(28px, 6vw, 84px);
+      align-items: end;
+      padding: clamp(48px, 8vw, 96px) 0 56px;
+    }
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--accent-dark);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-bottom: 22px;
+      font-size: clamp(2.65rem, 7vw, 5.9rem);
+      letter-spacing: -.065em;
+      line-height: .94;
+      font-weight: 850;
+    }
+    .hero-copy {
+      max-width: 650px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.9vw, 1.28rem);
+      line-height: 1.55;
+    }
+    .hero-copy strong { color: var(--ink); font-weight: 750; }
+    .formula {
+      position: relative;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .formula::before {
+      content: "DAILY LOOP";
+      display: block;
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: .69rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+    }
+    .formula-row {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      padding: 13px 0;
+      border-top: 1px solid var(--line);
+    }
+    .formula-number {
+      display: grid;
+      width: 29px;
+      height: 29px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: .77rem;
+      font-weight: 900;
+    }
+    .formula-row strong { display: block; margin-bottom: 3px; font-size: .95rem; }
+    .formula-row span { color: var(--muted); font-size: .86rem; line-height: 1.45; }
+
+    .toolbox {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin: 0 0 46px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(243, 240, 232, .92);
+      box-shadow: 0 10px 28px rgba(28, 42, 38, .06);
+      backdrop-filter: blur(12px);
+    }
+    .search-row { display: flex; gap: 10px; align-items: center; }
+    .search-wrap { position: relative; flex: 1; }
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      color: var(--muted);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    #search {
+      width: 100%;
+      min-height: 48px;
+      padding: 0 44px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      outline: none;
+      background: var(--card);
+      color: var(--ink);
+      font-size: .98rem;
+    }
+    #search::placeholder { color: #8a918d; }
+    #search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .clear-search {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      right: 9px;
+      top: 50%;
+      width: 31px;
+      height: 31px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--muted);
+      transform: translateY(-50%);
+    }
+    .clear-search:hover { background: var(--paper-2); color: var(--ink); }
+    .saved-toggle {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      gap: 8px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--card);
+      color: var(--ink);
+      font-size: .87rem;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+    .saved-toggle[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); }
+    .saved-toggle:active, .copy-button:active, .favorite-button:active { transform: translateY(1px) scale(.98); }
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 11px 0 1px;
+      scrollbar-width: none;
+    }
+    .chip-row::-webkit-scrollbar { display: none; }
+    .chip {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-size: .79rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .chip:hover { color: var(--ink); border-color: #a7b0aa; }
+    .chip[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: white; }
+    .result-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 2px 1px;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    #categories { padding-bottom: 90px; }
+    .category { scroll-margin-top: 120px; margin-bottom: 68px; }
+    .category-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid var(--line);
+    }
+    .category-kicker {
+      margin-bottom: 8px;
+      color: var(--warm);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .category h2 { margin-bottom: 7px; font-size: clamp(1.65rem, 4vw, 2.55rem); letter-spacing: -.045em; line-height: 1; }
+    .category-intro { margin-bottom: 0; color: var(--muted); font-size: .96rem; line-height: 1.5; }
+    .category-count { color: var(--muted); font-size: .8rem; white-space: nowrap; }
+    .phrase-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding-top: 18px; }
+    .phrase-card {
+      display: flex;
+      min-height: 230px;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--card);
+      box-shadow: 0 8px 22px rgba(28, 42, 38, .03);
+      transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease;
+    }
+    .phrase-card:hover { border-color: #a4b9b3; box-shadow: var(--shadow); transform: translateY(-2px); }
+    .phrase-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .use-label { color: var(--accent-dark); font-size: .72rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .favorite-button {
+      display: grid;
+      flex: 0 0 auto;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: transparent;
+      color: #8d9691;
+      transition: all .2s ease;
+    }
+    .favorite-button:hover { border-color: var(--accent); color: var(--accent); }
+    .favorite-button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); }
+    .phrase { margin: 12px 0 10px; font-size: clamp(1.15rem, 2vw, 1.4rem); letter-spacing: -.025em; line-height: 1.22; font-weight: 800; }
+    .meaning { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.55; }
+    .meaning strong { color: var(--ink); font-weight: 750; }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+    .tag {
+      min-height: 25px;
+      padding: 3px 8px;
+      border: 1px solid #cbd7d2;
+      border-radius: 999px;
+      background: #f1f7f4;
+      color: var(--accent-dark);
+      font-size: .7rem;
+      font-weight: 800;
+      line-height: 1.1;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .tag:hover { border-color: var(--accent); background: var(--accent-soft); }
+    .tag:active { transform: translateY(1px) scale(.98); }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .when { color: var(--muted); font-size: .78rem; line-height: 1.35; }
+    .copy-button {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 7px;
+      min-height: 34px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: .77rem;
+      font-weight: 800;
+      transition: all .2s ease;
+    }
+    .copy-button:hover { border-color: var(--accent); color: var(--accent-dark); }
+    .copy-button.copied { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); }
+    .empty {
+      display: none;
+      padding: 54px 20px;
+      border: 1px dashed #aab6b0;
+      border-radius: var(--radius-md);
+      text-align: center;
+      color: var(--muted);
+    }
+    .empty.visible { display: block; }
+    .empty strong { display: block; margin-bottom: 6px; color: var(--ink); font-size: 1.1rem; }
+    .footer-note {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0 38px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.55;
+    }
+    .footer-note p { margin-bottom: 0; }
+    .footer-note strong { color: var(--ink); }
+    .back-top { color: var(--accent-dark); font-weight: 800; text-decoration: none; white-space: nowrap; }
+    .back-top:hover { text-decoration: underline; }
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: max(22px, env(safe-area-inset-bottom));
+      z-index: 40;
+      max-width: calc(100% - 32px);
+      padding: 11px 15px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--paper);
+      box-shadow: var(--shadow);
+      font-size: .83rem;
+      font-weight: 750;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 12px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.visible { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 760px) {
+      .page-shell { width: min(100% - 24px, 600px); }
+      .topline { padding: 16px 0 14px; font-size: .68rem; }
+      .status { font-size: .63rem; }
+      .hero { grid-template-columns: 1fr; gap: 32px; padding: 54px 0 38px; }
+      h1 { max-width: 540px; font-size: clamp(2.7rem, 14vw, 4.5rem); }
+      .formula { max-width: 540px; }
+      .toolbox { margin-bottom: 34px; padding: 10px; }
+      .search-row { align-items: stretch; flex-direction: column; }
+      .saved-toggle { justify-content: center; }
+      .phrase-grid { grid-template-columns: 1fr; }
+      .phrase-card { min-height: 0; }
+      .category { margin-bottom: 54px; }
+      .category-head { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .category-count { font-size: .75rem; }
+      .footer-note { grid-template-columns: 1fr; gap: 12px; padding-bottom: 28px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#categories">Skip to phrases</a>
+  <header class="page-shell">
+    <div class="topline">
+      <div class="brand"><span class="brand-mark">/</span> AUS TALK</div>
+      <div class="status"><span class="status-dot" aria-hidden="true"></span> field guide · week one</div>
+    </div>
+    <div class="hero">
+      <div>
+        <p class="eyebrow">English for getting through the day</p>
+        <h1>Small phrases.<br>More confidence.</h1>
+        <p class="hero-copy">A quick guide for the hard first weeks in Australia: accents, housing, banking, healthcare, work, and daily errands. <strong>Search a situation, tap a phrase, and say it out loud.</strong> The Indonesian notes explain when it fits.</p>
+      </div>
+      <aside class="formula" aria-label="Conversation formula">
+        <div class="formula-row"><div class="formula-number">01</div><div><strong>Start friendly</strong><span>“Excuse me…” or “Hi…”</span></div></div>
+        <div class="formula-row"><div class="formula-number">02</div><div><strong>Ask clearly</strong><span>One short question is enough.</span></div></div>
+        <div class="formula-row"><div class="formula-number">03</div><div><strong>Close simply</strong><span>“Thanks. Have a good one!”</span></div></div>
+      </aside>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="toolbox" aria-label="Phrase controls">
+      <div class="search-row">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+          <input id="search" type="search" autocomplete="off" placeholder="Search phrase or tag: accent, renting, interview…" aria-label="Search phrases and tags">
+          <button class="clear-search" id="clearSearch" type="button" aria-label="Clear search" title="Clear search">×</button>
+        </div>
+        <button class="saved-toggle" id="savedToggle" type="button" aria-pressed="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z"></path></svg>
+          Saved <span id="savedCount">0</span>
+        </button>
+      </div>
+      <div class="chip-row" id="chips" aria-label="Filter by category"></div>
+      <div class="result-meta"><span id="resultCount">Showing all phrases</span><span>Click a tag to search · Press / to focus</span></div>
+    </div>
+
+    <div id="categories"></div>
+    <div class="empty" id="emptyState">
+      <strong>No phrase found</strong>
+      Try another word, or clear the search and choose a category.
+    </div>
+
+    <div class="footer-note">
+      <p><strong>Practice loop:</strong> pick one phrase, say it twice, then use it once today. Fluency grows from small, real interactions.</p>
+      <a class="back-top" href="#top">Back to top ↑</a>
+    </div>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const categories = [
+      {
+        id: 'basics',
+        label: 'Start anywhere',
+        title: 'Face to face',
+        intro: 'Greetings, small talk, and polite exits for everyday people you meet.',
+        phrases: [
+          ['Greeting', 'Hi, how’s it going?', 'Sapaan santai. Jawaban mudah: “Good, thanks. How about you?”', 'At a shop, work, or when meeting someone.'],
+          ['New in town', 'I’m new here — I moved from Indonesia last week.', 'Saya baru di sini — pindah dari Indonesia minggu lalu.', 'Use this when you want people to understand your context.'],
+          ['Keep talking', 'How are you finding it so far?', 'Bagaimana menurutmu sejauh ini?', 'Ask this when someone is also new or has moved recently.'],
+          ['Ask a name', 'Sorry, what was your name again?', 'Maaf, siapa namanya tadi?', 'Natural if you forgot a name. No need to over-explain.'],
+          ['Ask advice', 'Do you know any good places to eat around here?', 'Tahu tempat makan enak di sekitar sini?', 'A friendly way to start a local conversation.'],
+          ['Leave', 'I’d better get going. Nice chatting with you!', 'Saya harus pergi dulu. Senang ngobrol denganmu!', 'A warm, natural way to finish a chat.']
+        ]
+      },
+      {
+        id: 'transport',
+        label: 'Getting around',
+        title: 'Public transport',
+        intro: 'Use these on buses, trains, platforms, and when you need directions.',
+        phrases: [
+          ['Check a bus', 'Excuse me, does this bus go to [place]?', 'Apakah bus ini pergi ke [tempat]?', 'Replace [place] with your station or suburb.'],
+          ['Find a platform', 'Which platform do I need for [place]?', 'Saya perlu ke peron berapa untuk [tempat]?', 'A clear question at a large station.'],
+          ['Check direction', 'Am I going the right way for [place]?', 'Apakah arah saya sudah benar menuju [tempat]?', 'Use it before you get too far.'],
+          ['Payment', 'Can I pay with my bank card, or do I need a transport card?', 'Bisa pakai kartu bank atau harus kartu transport?', 'Payment systems differ between cities.'],
+          ['Tap on / off', 'Do I need to tap off as well?', 'Apakah saya juga harus tap off?', 'Ask before leaving the station.'],
+          ['Your stop', 'Is the next stop [name]?', 'Apakah pemberhentian berikutnya [nama]?', 'Good when the route is unfamiliar.'],
+          ['Getting off', 'Excuse me, I’m getting off here.', 'Permisi, saya turun di sini.', 'Say it politely when people block the aisle.']
+        ]
+      },
+      {
+        id: 'shopping',
+        label: 'Paying & buying',
+        title: 'Market & supermarket',
+        intro: 'Find products, check prices, pay, and handle a small problem at the checkout.',
+        phrases: [
+          ['Find an item', 'Excuse me, where can I find the rice?', 'Permisi, di mana saya bisa menemukan beras?', 'Swap “the rice” for any item.'],
+          ['Ask price', 'How much is this?', 'Berapa harganya?', 'Pointing is fine; you do not need a long sentence.'],
+          ['Check unit', 'Is that price per kilo?', 'Harga itu per kilo?', 'Useful at markets and deli counters.'],
+          ['Request amount', 'Could I get half a kilo of these, please?', 'Boleh minta setengah kilo yang ini?', 'Point to the item while speaking.'],
+          ['Decline help', 'Just looking, thanks.', 'Saya lihat-lihat dulu, terima kasih.', 'Friendly way to say you do not need help yet.'],
+          ['Pay', 'Can I pay by card?', 'Bisa bayar pakai kartu?', 'You can also say: “I’ll pay by card.”'],
+          ['Receipt', 'Could I get a receipt, please?', 'Boleh minta struk, ya?', 'Useful for returns or delivery expenses.'],
+          ['Fix a charge', 'I think I was charged twice for this.', 'Sepertinya saya ditagih dua kali untuk ini.', 'Show the receipt and stay calm.']
+        ]
+      },
+      {
+        id: 'food',
+        label: 'Ordering',
+        title: 'Food & coffee',
+        intro: 'The ordering formula: “Could I get + item + preference + please?”',
+        phrases: [
+          ['Order', 'Could I get a small flat white, please?', 'Boleh minta flat white kecil?', 'Replace the drink with any menu item.'],
+          ['Eat here', 'Have here, please. / Takeaway, please.', 'Makan di sini / dibungkus.', 'Staff may ask: “Have here or takeaway?”'],
+          ['Change an item', 'Could I get that with oat milk?', 'Bisa pakai oat milk?', 'Replace with “extra sauce”, “no ice”, or another preference.'],
+          ['Dietary question', 'Does this contain pork?', 'Apakah ini mengandung babi?', 'For allergies, say: “I’m allergic to …”'],
+          ['Halal check', 'Is the chicken halal?', 'Apakah ayamnya halal?', 'Ask before ordering if it matters to you.'],
+          ['Finish order', 'That’s all, thanks.', 'Itu saja, terima kasih.', 'Use after “Anything else?”']
+        ]
+      },
+      {
+        id: 'delivery',
+        label: 'On the road',
+        title: 'Uber Eats delivery',
+        intro: 'Short, calm scripts for restaurant pickup, customer messages, and handover.',
+        phrases: [
+          ['Restaurant pickup', 'Hi, I’m here to pick up an Uber Eats order for [name].', 'Saya mengambil pesanan Uber Eats untuk [nama].', 'Give the customer name or order number.'],
+          ['Check timing', 'Roughly how long will it be?', 'Kira-kira berapa lama lagi?', 'Ask the restaurant without sounding demanding.'],
+          ['Check bags', 'Is this everything, including the drinks?', 'Apakah ini sudah lengkap termasuk minumannya?', 'Check before you leave the restaurant.'],
+          ['Restaurant delay', 'They’re still preparing your order. I’ll head over as soon as it’s ready.', 'Restoran masih menyiapkan pesanan Anda. Saya berangkat segera setelah siap.', 'Send this as a customer message.'],
+          ['Find entrance', 'I’m outside [building], but I can’t find the entrance. Could you help me?', 'Saya di luar [gedung], tapi tidak menemukan pintu masuk. Bisa bantu?', 'Use a message or phone call.'],
+          ['Handover', 'Here you go. Enjoy your meal!', 'Ini pesanannya. Selamat menikmati!', 'A warm, simple handover.'],
+          ['Leave at door', 'I’ve left your order at your door as requested. Enjoy!', 'Pesanan sudah saya taruh di depan pintu sesuai permintaan.', 'Send after completing a leave-at-door delivery.']
+        ]
+      },
+      {
+        id: 'work',
+        label: 'At work',
+        title: 'Software engineering',
+        intro: 'Clear phrases for stand-ups, requirements, code reviews, and asking for help.',
+        phrases: [
+          ['Introduce yourself', 'I’m a software engineer with [number] years of experience.', 'Saya software engineer dengan pengalaman [jumlah] tahun.', 'Add your main technologies after this sentence.'],
+          ['Clarify', 'Just to clarify, should this also work for [case]?', 'Untuk memastikan, apakah ini juga harus bekerja untuk [kasus]?', 'Use before implementing an unclear requirement.'],
+          ['Ask for an example', 'Could you give me an example of the expected output?', 'Bisa beri contoh output yang diharapkan?', 'Examples often resolve confusion faster than abstract discussion.'],
+          ['Confirm', 'So the goal is to [result]. Have I got that right?', 'Jadi tujuannya adalah [hasil]. Apakah pemahaman saya benar?', 'Repeat the requirement in your own words.'],
+          ['Stand-up update', 'I’ve finished [task]. Next, I’m working on [next task].', 'Saya sudah menyelesaikan [task]. Selanjutnya mengerjakan [task berikutnya].', 'A simple progress update.'],
+          ['Blocker', 'I’m blocked on access to the staging environment.', 'Saya terhambat karena belum punya akses ke staging.', 'Replace the ending with your actual blocker.'],
+          ['Ask for help', 'I’ve tried [A] and [B], but I’m still getting [error]. Could you take a look?', 'Saya sudah mencoba [A] dan [B], tapi masih mendapat [error]. Bisa bantu lihat?', 'Shows what you tried before asking.'],
+          ['Disagree politely', 'I see what you mean. My concern is [specific issue].', 'Saya mengerti maksudnya. Kekhawatiran saya adalah [isu].', 'Focus on the issue, not the person.']
+        ]
+      },
+      {
+        id: 'renting',
+        label: 'Finding a home',
+        title: 'Renting & utilities',
+        intro: 'Renting has its own vocabulary. These phrases help with inspections, applications, bills, and repairs.',
+        phrases: [
+          ['Inspection', 'Could I arrange an inspection?', 'Bisa mengatur jadwal melihat rumah?', 'Use this when contacting an agent or landlord.'],
+          ['Application', 'What documents do I need to apply?', 'Dokumen apa yang diperlukan untuk mendaftar?', 'Ask before preparing a rental application.'],
+          ['Lease', 'How long is the lease?', 'Berapa lama masa sewanya?', 'You can also ask: “Is it a fixed-term lease?”'],
+          ['Bond', 'How much is the bond?', 'Berapa uang jaminannya?', 'Bond is the rental security deposit.'],
+          ['Bills', 'Are bills included in the rent?', 'Apakah tagihan sudah termasuk sewa?', 'Ask about electricity, water, and internet.'],
+          ['Furniture', 'Is this room furnished?', 'Apakah kamar ini sudah ada furniturnya?', 'Useful when comparing rooms or share houses.'],
+          ['Repair', 'There’s a leak in the bathroom. Could someone take a look?', 'Ada kebocoran di kamar mandi. Bisa minta seseorang mengeceknya?', 'Send this to the agent or property manager.'],
+          ['Notice', 'How much notice do I need to give?', 'Berapa lama pemberitahuan yang harus saya berikan?', 'Ask before moving out or ending a lease.']
+        ]
+      },
+      {
+        id: 'money',
+        label: 'Money & phone',
+        title: 'Banking & mobile plans',
+        intro: 'Set up a bank account, understand fees, and ask for help with your card or phone service.',
+        phrases: [
+          ['Open account', 'I’d like to open a bank account.', 'Saya ingin membuka rekening bank.', 'Start with this at a branch or online support desk.'],
+          ['ID', 'What ID do I need to bring?', 'Identitas apa yang perlu saya bawa?', 'Ask before visiting a branch.'],
+          ['Fees', 'Are there any monthly fees?', 'Apakah ada biaya bulanan?', 'Also ask about international transfer fees.'],
+          ['Transfer', 'How long will this transfer take?', 'Berapa lama transfer ini diproses?', 'Useful when sending or receiving money.'],
+          ['ATM', 'Where’s the nearest ATM?', 'Di mana ATM terdekat?', 'Replace “ATM” with “branch” if needed.'],
+          ['Lost card', 'I’d like to report my card lost or stolen.', 'Saya ingin melaporkan kartu hilang atau dicuri.', 'Call the bank quickly if this happens.'],
+          ['SIM card', 'I’d like a prepaid SIM card, please.', 'Saya ingin membeli kartu SIM prabayar.', 'Ask a phone shop when you first arrive.'],
+          ['Top up', 'How do I top up this number?', 'Bagaimana cara mengisi ulang nomor ini?', 'Use this for prepaid mobile service.']
+        ]
+      },
+      {
+        id: 'health',
+        label: 'Health',
+        title: 'Doctor & pharmacy',
+        intro: 'Explain symptoms, ask about costs, and request language support when you need healthcare.',
+        phrases: [
+          ['Book a GP', 'I’d like to make an appointment with a GP.', 'Saya ingin membuat janji dengan dokter umum.', 'GP means general practitioner.'],
+          ['First visit', 'It’s my first visit here.', 'Ini kunjungan pertama saya di sini.', 'Say this at reception so they can explain the process.'],
+          ['Symptom', 'I’ve had a fever since yesterday.', 'Saya demam sejak kemarin.', 'Replace the symptom and time as needed.'],
+          ['Pain', 'The pain is about seven out of ten.', 'Rasa sakitnya sekitar tujuh dari sepuluh.', 'A clear way to describe pain intensity.'],
+          ['Allergy', 'I’m allergic to penicillin.', 'Saya alergi penisilin.', 'Always tell medical staff about allergies.'],
+          ['Medicare', 'Do you accept Medicare?', 'Apakah menerima Medicare?', 'Ask before the appointment if you are unsure about billing.'],
+          ['Cost', 'How much will the appointment cost?', 'Berapa biaya konsultasinya?', 'Ask about the fee and possible gap payment.'],
+          ['Interpreter', 'Could I book an Indonesian interpreter, please?', 'Bisa memesan penerjemah bahasa Indonesia?', 'It is okay to request an interpreter for important care.']
+        ]
+      },
+      {
+        id: 'jobsearch',
+        label: 'Getting hired',
+        title: 'Job search & interviews',
+        intro: 'Useful for your first Australian job, whether you apply as a developer or take a short-term role.',
+        phrases: [
+          ['Start date', 'I’m available to start immediately.', 'Saya bisa mulai segera.', 'Change “immediately” to a date if needed.'],
+          ['Work rights', 'I have full work rights in Australia.', 'Saya memiliki hak kerja penuh di Australia.', 'Say this only when it is accurate for your visa.'],
+          ['Resume', 'Could I leave my resume with you?', 'Boleh saya meninggalkan resume saya?', 'Useful for casual jobs and walk-in applications.'],
+          ['Role', 'What does a typical day in this role look like?', 'Seperti apa kegiatan sehari-hari dalam pekerjaan ini?', 'A strong question in an interview.'],
+          ['Salary', 'Could you tell me the salary range?', 'Bisa memberi tahu kisaran gajinya?', 'Polite way to ask about pay.'],
+          ['Interview time', 'Would Tuesday morning suit you for an interview?', 'Apakah Selasa pagi cocok untuk wawancara?', '“Suit you” means “work for you”.'],
+          ['Repeat question', 'Could you repeat the question, please?', 'Bisa mengulangi pertanyaannya?', 'A professional way to handle a difficult accent or question.'],
+          ['Follow up', 'Thank you for your time. I look forward to hearing from you.', 'Terima kasih waktunya. Saya menunggu kabar selanjutnya.', 'Use in a follow-up email after an interview.']
+        ]
+      },
+      {
+        id: 'services',
+        label: 'Forms & services',
+        title: 'Government & customer service',
+        intro: 'Forms and phone queues can be confusing. These phrases help you ask for the next clear step.',
+        phrases: [
+          ['Appointment', 'I’d like to make an appointment.', 'Saya ingin membuat janji.', 'Start here at a government office or service centre.'],
+          ['Form', 'Could you help me fill out this form?', 'Bisa membantu saya mengisi formulir ini?', 'Show the exact section you do not understand.'],
+          ['Postcode', 'Which postcode should I use?', 'Kode pos yang mana yang harus saya gunakan?', 'Postcode is often required on Australian forms.'],
+          ['Update address', 'I’ve recently moved. How do I update my address?', 'Saya baru pindah. Bagaimana cara memperbarui alamat?', 'Useful for banks, services, and official accounts.'],
+          ['Interpreter', 'Is an interpreter available?', 'Apakah ada penerjemah?', 'Ask at the beginning of an important appointment.'],
+          ['Queue', 'Where do I need to wait?', 'Saya harus menunggu di mana?', 'Use this when the service area is unclear.'],
+          ['Reference number', 'Could I get a reference number for this request?', 'Bisa minta nomor referensi untuk permintaan ini?', 'Keep the number for follow-up calls.'],
+          ['Call back', 'Could you call me back if there is an update?', 'Bisa menelepon saya kembali kalau ada kabar?', 'Useful when a case needs more time.']
+        ]
+      },
+      {
+        id: 'home',
+        label: 'Home life',
+        title: 'Neighbours & shared homes',
+        intro: 'Small, respectful scripts for settling into a neighbourhood, share house, or apartment building.',
+        phrases: [
+          ['Introduce yourself', 'Hi, I’m [name]. I’ve just moved in next door.', 'Hai, saya [nama]. Saya baru pindah ke sebelah.', 'A simple way to meet a neighbour.'],
+          ['Noise', 'Sorry to bother you. Could you keep the noise down a little?', 'Maaf mengganggu. Bisa sedikit mengurangi suara berisiknya?', 'Use a calm tone and ask politely.'],
+          ['Maintenance', 'The hot water isn’t working.', 'Air panasnya tidak berfungsi.', 'Tell the agent, landlord, or housemate.'],
+          ['Parcel', 'A parcel for me may have been delivered here.', 'Mungkin ada paket untuk saya yang dikirim ke sini.', 'Useful if a delivery went to a neighbour.'],
+          ['Bins', 'Which bin should I use for this?', 'Benda ini harus dibuang ke tempat sampah yang mana?', 'Waste colours and rules can vary by council.'],
+          ['Locked out', 'I’ve locked myself out. Who should I contact?', 'Saya terkunci di luar. Siapa yang harus saya hubungi?', 'Ask the agent, building manager, or housemate.']
+        ]
+      },
+      {
+        id: 'details',
+        label: 'Names & numbers',
+        title: 'Addresses, spelling & time',
+        intro: 'Australian accents and unfamiliar place names make details easy to miss. Repeat them back without embarrassment.',
+        phrases: [
+          ['Spell a name', 'Could you spell your name, please?', 'Bisa mengeja nama Anda?', 'Use it for names, suburbs, and businesses.'],
+          ['Street name', 'Could you repeat the street name?', 'Bisa mengulangi nama jalannya?', 'Ask before entering an address.'],
+          ['Read back', 'Let me read that number back to you.', 'Biar saya ulangi nomor itu.', 'Then repeat the number slowly.'],
+          ['Date', 'Did you mean the 15th of May?', 'Maksudnya tanggal 15 Mei?', 'Australian dates usually say day before month.'],
+          ['Time', 'What time should I arrive?', 'Saya harus tiba jam berapa?', 'Follow with: “In the morning or afternoon?”'],
+          ['Units', 'Is that metres or kilometres?', 'Itu meter atau kilometer?', 'Useful for directions, delivery, and exercise.'],
+          ['Email', 'Could you send that to me by email?', 'Bisa dikirim lewat email?', 'Helpful when spoken details are difficult.'],
+          ['Location', 'Could you send me the exact address?', 'Bisa kirim alamat lengkapnya?', 'Ask for a message when you are finding a place.']
+        ]
+      },
+      {
+        id: 'aussie',
+        label: 'Local shorthand',
+        title: 'Australian expressions',
+        intro: 'You will hear these often. Understand them first; use them naturally when you feel ready.',
+        phrases: [
+          ['Greeting', 'How ya going?', 'Apa kabar?', 'A very common greeting. Reply: “Good, thanks. You?”'],
+          ['Friendly thanks', 'Cheers.', 'Terima kasih; kadang juga berarti sampai jumpa.', 'Common in shops, cafes, and casual conversation.'],
+          ['No problem', 'No worries.', 'Tidak masalah / sama-sama.', 'Use after someone thanks you or apologises.'],
+          ['Goodbye', 'Have a good one.', 'Semoga harimu menyenangkan.', 'Reply: “You too!”'],
+          ['Check in', 'All good?', 'Semuanya oke?', 'Reply: “Yep, all good, thanks.”'],
+          ['Interested', 'Keen?', 'Mau ikut / tertarik?', 'Reply: “Yeah, sounds good!”'],
+          ['Afternoon', 'See you this arvo.', 'Sampai ketemu sore ini.', '“Arvo” is casual Australian shorthand for afternoon.']
+        ]
+      },
+      {
+        id: 'rescue',
+        label: 'When stuck',
+        title: 'Rescue phrases',
+        intro: 'You can keep control of a conversation even when the accent or speed is difficult.',
+        phrases: [
+          ['Repeat', 'Sorry, could you say that again?', 'Maaf, bisa diulangi?', 'The most useful sentence in your first weeks.'],
+          ['Slow down', 'Could you speak a little more slowly, please?', 'Bisa bicara sedikit lebih pelan?', 'Polite and completely normal to ask.'],
+          ['One word', 'Sorry, what does “[word]” mean?', 'Maaf, “[kata]” artinya apa?', 'Ask about one word at a time.'],
+          ['Write it down', 'Could you write that down for me?', 'Bisa tolong dituliskan?', 'Useful for addresses, names, and numbers.'],
+          ['Confirm numbers', 'Did you say fifteen or fifty?', 'Anda bilang lima belas atau lima puluh?', 'Repeat the two possible numbers.'],
+          ['Check understanding', 'So, I change trains here, right?', 'Jadi saya ganti kereta di sini, ya?', 'Repeat your understanding and wait for “yes”.'],
+          ['Ask another way', 'I’m still not quite following. Could you explain it another way?', 'Saya masih belum paham. Bisa dijelaskan dengan cara lain?', 'Use when the first explanation was not enough.']
+        ]
+      },
+      {
+        id: 'emergency',
+        label: 'Safety first',
+        title: 'Problems & emergencies',
+        intro: 'Keep these short and direct. In an immediate emergency in Australia, call triple zero (000).',
+        phrases: [
+          ['Emergency', 'I need help. This is an emergency.', 'Saya butuh bantuan. Ini keadaan darurat.', 'Use a clear voice and say your location next.'],
+          ['Call 000', 'Could you call triple zero, please?', 'Bisa menelepon triple zero?', 'Triple zero is Australia’s emergency number.'],
+          ['Theft', 'I’d like to report a theft.', 'Saya ingin melaporkan pencurian.', 'Use this with police or security staff.'],
+          ['Lost wallet', 'My wallet has been lost or stolen.', 'Dompet saya hilang atau dicuri.', 'Mention where and when you last had it.'],
+          ['Accident', 'There’s been a car accident.', 'Ada kecelakaan mobil.', 'Give the exact location after this sentence.'],
+          ['Fire', 'There’s smoke coming from the building.', 'Ada asap keluar dari gedung.', 'Move to safety and tell emergency services.'],
+          ['Unsafe', 'I don’t feel safe here.', 'Saya merasa tidak aman di sini.', 'Tell staff, security, or police.'],
+          ['Location', 'I’m at [address].', 'Saya berada di [alamat].', 'The location is the most useful next detail.']
+        ]
+      }
+    ];
+
+    const icons = {
+      star: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z"></path></svg>',
+      copy: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>'
+    };
+
+    const state = { query: '', category: 'all', savedOnly: false, favorites: new Set() };
+    const storageKey = 'aus-talk-favorites-v1';
+    try { state.favorites = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]')); } catch (_) {}
+
+    const categoryTagMap = {
+      basics: ['conversation', 'small talk'],
+      transport: ['transport', 'directions'],
+      shopping: ['shopping', 'checkout'],
+      food: ['food', 'cafe'],
+      delivery: ['delivery', 'restaurant'],
+      work: ['workplace', 'software'],
+      renting: ['renting', 'housing'],
+      money: ['banking', 'mobile'],
+      health: ['health', 'doctor'],
+      jobsearch: ['job search', 'interview'],
+      services: ['services', 'forms'],
+      home: ['home', 'neighbours'],
+      details: ['details', 'numbers'],
+      aussie: ['australia', 'slang'],
+      rescue: ['understanding', 'accent'],
+      emergency: ['safety', 'emergency']
+    };
+    const keywordTagMap = [
+      ['triple zero', '000'], ['emergency', 'emergency'], ['theft', 'police'], ['stolen', 'police'], ['fire', 'fire'],
+      ['bus', 'bus'], ['train', 'train'], ['platform', 'station'], ['station', 'station'], ['transport', 'transport'],
+      ['rent', 'rent'], ['lease', 'lease'], ['bond', 'bond'], ['furnished', 'furnished'], ['repair', 'maintenance'],
+      ['bank', 'banking'], ['account', 'banking'], ['card', 'card'], ['atm', 'cash'], ['sim', 'mobile'], ['phone', 'mobile'], ['top up', 'prepaid'],
+      ['doctor', 'doctor'], ['gp', 'doctor'], ['fever', 'symptoms'], ['pain', 'symptoms'], ['allergic', 'allergy'], ['medicare', 'medicare'], ['interpreter', 'interpreter'],
+      ['job', 'job search'], ['resume', 'resume'], ['interview', 'interview'], ['salary', 'salary'], ['work rights', 'visa'], ['role', 'role'],
+      ['form', 'forms'], ['postcode', 'postcode'], ['address', 'address'], ['reference number', 'follow-up'], ['call me back', 'follow-up'],
+      ['neighbour', 'neighbours'], ['noise', 'noise'], ['parcel', 'delivery'], ['bin', 'waste'], ['locked', 'keys'],
+      ['spell', 'spelling'], ['number', 'numbers'], ['date', 'date'], ['time', 'time'], ['metres', 'distance'], ['email', 'email'],
+      ['accent', 'accent'], ['repeat', 'repeat'], ['slowly', 'repeat'], ['following', 'understanding'],
+      ['coffee', 'coffee'], ['takeaway', 'takeaway'], ['halal', 'halal'], ['pork', 'dietary'], ['food', 'food'],
+      ['uber eats', 'delivery'], ['restaurant', 'restaurant'], ['order', 'ordering'], ['software', 'software'], ['staging', 'software'],
+      ['cheers', 'slang'], ['worries', 'slang'], ['arvo', 'slang'], ['keen', 'slang']
+    ];
+
+    const categoriesEl = document.getElementById('categories');
+    const chipsEl = document.getElementById('chips');
+    const searchEl = document.getElementById('search');
+    const clearSearchEl = document.getElementById('clearSearch');
+    const savedToggleEl = document.getElementById('savedToggle');
+    const savedCountEl = document.getElementById('savedCount');
+    const resultCountEl = document.getElementById('resultCount');
+    const emptyEl = document.getElementById('emptyState');
+    const toastEl = document.getElementById('toast');
+    let toastTimer;
+
+    function slugId(categoryId, index) { return categoryId + '-' + index; }
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
+    }
+    function saveFavorites() {
+      try { localStorage.setItem(storageKey, JSON.stringify([...state.favorites])); } catch (_) {}
+      savedCountEl.textContent = state.favorites.size;
+    }
+    function showToast(message) {
+      toastEl.textContent = message;
+      toastEl.classList.add('visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove('visible'), 1800);
+    }
+    function getPhraseTags(category, phrase) {
+      const haystack = phrase.join(' ').toLowerCase();
+      const baseTags = categoryTagMap[category.id] || [category.label.toLowerCase(), 'daily life'];
+      const tags = [...baseTags, phrase[0].toLowerCase()];
+      keywordTagMap.forEach(([keyword, tag]) => {
+        const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const found = keyword.includes(' ') ? haystack.includes(keyword) : new RegExp('\\b' + escapedKeyword + '\\b').test(haystack);
+        if (found) tags.push(tag);
+      });
+      const uniqueTags = [...new Set(tags)];
+      if (uniqueTags.length < 3) uniqueTags.push(category.label.toLowerCase());
+      return [...new Set(uniqueTags)].slice(0, 5);
+    }
+    function formatTag(tag) {
+      return tag === '000' ? tag : tag.charAt(0).toUpperCase() + tag.slice(1);
+    }
+    function matches(phrase, tags, query) {
+      if (!query) return true;
+      return [...phrase, tags.join(' ')].join(' ').toLowerCase().includes(query.toLowerCase());
+    }
+    function renderChips() {
+      const all = `<button class="chip" type="button" data-category="all" aria-pressed="${state.category === 'all'}">All phrases</button>`;
+      chipsEl.innerHTML = all + categories.map(category => `<button class="chip" type="button" data-category="${category.id}" aria-pressed="${state.category === category.id}">${escapeHtml(category.label)}</button>`).join('');
+    }
+    function cardTemplate(category, phrase, index, tags) {
+      const [label, english, meaning, when] = phrase;
+      const id = slugId(category.id, index);
+      const saved = state.favorites.has(id);
+      const tagHtml = tags.map(tag => `<button class="tag" type="button" data-action="tag" data-tag="${escapeHtml(tag)}" aria-label="Search tag ${escapeHtml(tag)}">${escapeHtml(formatTag(tag))}</button>`).join('');
+      return `<article class="phrase-card" data-id="${id}">
+        <div>
+          <div class="phrase-top"><div class="use-label">${escapeHtml(label)}</div><button class="favorite-button" type="button" data-action="favorite" aria-label="${saved ? 'Remove from saved' : 'Save phrase'}" aria-pressed="${saved}">${icons.star}</button></div>
+          <p class="phrase">“${escapeHtml(english)}”</p>
+          <p class="meaning"><strong>Arti:</strong> ${escapeHtml(meaning)}</p>
+          <div class="tag-list" aria-label="Phrase tags">${tagHtml}</div>
+        </div>
+        <div class="card-footer"><span class="when">${escapeHtml(when)}</span><button class="copy-button" type="button" data-action="copy" data-copy="${escapeHtml(english)}">${icons.copy}<span>Copy</span></button></div>
+      </article>`;
+    }
+    function render() {
+      renderChips();
+      const query = state.query.trim();
+      let total = 0;
+      let visible = 0;
+      categoriesEl.innerHTML = categories.map((category, categoryIndex) => {
+        if (state.category !== 'all' && state.category !== category.id) return '';
+        const phraseHtml = category.phrases.map((phrase, index) => {
+          const id = slugId(category.id, index);
+          const tags = getPhraseTags(category, phrase);
+          const show = matches(phrase, tags, query) && (!state.savedOnly || state.favorites.has(id));
+          if (show) visible += 1;
+          total += 1;
+          return show ? cardTemplate(category, phrase, index, tags) : '';
+        }).join('');
+        const shownInCategory = category.phrases.filter((phrase, index) => {
+          const tags = getPhraseTags(category, phrase);
+          return matches(phrase, tags, query) && (!state.savedOnly || state.favorites.has(slugId(category.id, index)));
+        }).length;
+        if (!shownInCategory) return '';
+        return `<section class="category" id="category-${category.id}" data-category-section="${category.id}">
+          <div class="category-head"><div><div class="category-kicker">${String(categoryIndex + 1).padStart(2, '0')} / ${escapeHtml(category.label)}</div><h2>${escapeHtml(category.title)}</h2><p class="category-intro">${escapeHtml(category.intro)}</p></div><div class="category-count">${shownInCategory} phrase${shownInCategory === 1 ? '' : 's'}</div></div>
+          <div class="phrase-grid">${phraseHtml}</div>
+        </section>`;
+      }).join('');
+      emptyEl.classList.toggle('visible', visible === 0);
+      savedCountEl.textContent = state.favorites.size;
+      savedToggleEl.setAttribute('aria-pressed', String(state.savedOnly));
+      const scope = state.category === 'all' ? '' : ' in ' + (categories.find(category => category.id === state.category)?.title || 'this category');
+      resultCountEl.textContent = query ? `${visible} result${visible === 1 ? '' : 's'}${scope}` : (state.savedOnly ? `${visible} saved phrase${visible === 1 ? '' : 's'}` : `Showing ${total} phrases`);
+    }
+
+    chipsEl.addEventListener('click', event => {
+      const chip = event.target.closest('[data-category]');
+      if (!chip) return;
+      state.category = chip.dataset.category;
+      render();
+      document.getElementById('categories').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    searchEl.addEventListener('input', event => { state.query = event.target.value; render(); });
+    clearSearchEl.addEventListener('click', () => { searchEl.value = ''; state.query = ''; searchEl.focus(); render(); });
+    savedToggleEl.addEventListener('click', () => { state.savedOnly = !state.savedOnly; render(); });
+    categoriesEl.addEventListener('click', async event => {
+      const button = event.target.closest('[data-action]');
+      if (!button) return;
+      if (button.dataset.action === 'tag') {
+        state.query = button.dataset.tag;
+        state.category = 'all';
+        state.savedOnly = false;
+        searchEl.value = state.query;
+        render();
+        searchEl.focus();
+        showToast('Searching tag: ' + formatTag(button.dataset.tag));
+        return;
+      }
+      const card = button.closest('.phrase-card');
+      const id = card?.dataset.id;
+      if (button.dataset.action === 'favorite' && id) {
+        if (state.favorites.has(id)) { state.favorites.delete(id); showToast('Removed from saved phrases'); }
+        else { state.favorites.add(id); showToast('Saved for quick practice'); }
+        saveFavorites();
+        render();
+      }
+      if (button.dataset.action === 'copy') {
+        const text = button.dataset.copy;
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (_) {
+          const helper = document.createElement('textarea');
+          helper.value = text; document.body.appendChild(helper); helper.select(); document.execCommand('copy'); helper.remove();
+        }
+        button.classList.add('copied');
+        button.querySelector('span').textContent = 'Copied';
+        showToast('Phrase copied');
+        setTimeout(() => { button.classList.remove('copied'); if (button.isConnected) button.querySelector('span').textContent = 'Copy'; }, 1400);
+      }
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === '/' && document.activeElement !== searchEl && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) { event.preventDefault(); searchEl.focus(); }
+      if (event.key === 'Escape' && document.activeElement === searchEl && searchEl.value) { searchEl.value = ''; state.query = ''; render(); }
+    });
+    render();
+  </script>
+</body>
+</html>
