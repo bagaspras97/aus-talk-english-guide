@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/outputs/english-in-australia.html"
+    }
+  ]
+}
